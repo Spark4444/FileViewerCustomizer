@@ -71,7 +71,7 @@ h1 {
   border-radius: 6px;
 }
 
-#value {
+#value1, #value2, #value3 {
   font-family: helvetica;
   cursor: pointer;
   font-size: 14px;

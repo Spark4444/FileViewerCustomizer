@@ -37,61 +37,33 @@ if (isLocalFile || isDirectFile) {
   const mainElement = document.body || document.querySelector("svg");
   const pre = document.querySelector("pre");
   const img = document.querySelector("img");
-  let currentColor = "#000000";
-  let currentTextColor = "#ffffff";
-  let currentImageBackgroundColor = "#ffffff";
 
-  if (mainElement) {
-    // Initialize the background color
-    getFromChromeStorage("backgroundColor", (color) => {
-        currentColor = checkIfAValueIsAColor(color, "#000000");
-        mainElement.style.backgroundColor = currentColor;
-    });
+  // Initialize color for the image
+  function initializeColor(element, storageKey, styleProperty, defaultColor) {
+    // Check if element exists
+    if (element) {
+        // Get the initial color from storage
+      getFromChromeStorage(storageKey, (color) => {
+          element.style[styleProperty] = checkIfAValueIsAColor(color, defaultColor);
+      });
 
-    // Listen for changes to the Chrome storage
-    chrome.storage.onChanged.addListener((changes, namespace) => {
-        if (namespace === "sync" && changes.backgroundColor) {
-            if (changes.backgroundColor.newValue !== currentColor) {
-                currentColor = checkIfAValueIsAColor(changes.backgroundColor.newValue, "#000000");
-                mainElement.style.backgroundColor = currentColor;
-            }
-        }
-    });
+      // Listen for changes to the Chrome storage
+      chrome.storage.onChanged.addListener((changes, namespace) => {
+          if (namespace === "sync" && changes[storageKey]) {
+              if (changes[storageKey].newValue !== element.style[styleProperty]) {
+                  element.style[styleProperty] = checkIfAValueIsAColor(changes[storageKey].newValue, defaultColor);
+              }
+          }
+      });
+    }
   }
 
-  if (pre) {
-    // Get the text color
-    getFromChromeStorage("textColor", (color) => {
-        currentTextColor = checkIfAValueIsAColor(color, "#ffffff");
-        pre.style.color = currentTextColor;
-    });
+  // Initialize color for the main element
+  initializeColor(mainElement, "backgroundColor", "backgroundColor", "#000000");
 
-    // Listen for changes to the Chrome storage
-    chrome.storage.onChanged.addListener((changes, namespace) => {
-        if (namespace === "sync" && changes.textColor) {
-            if (changes.textColor.newValue !== currentTextColor) {
-                currentTextColor = checkIfAValueIsAColor(changes.textColor.newValue, "#ffffff");
-                pre.style.color = currentTextColor;
-            }
-        }
-    });
-  }
+  // Initialize color for the preformatted text
+  initializeColor(pre, "textColor", "color", "#ffffff");
 
-  if (img) {
-    // Get the image background color
-    getFromChromeStorage("imageBackgroundColor", (color) => {
-        currentImageBackgroundColor = checkIfAValueIsAColor(color, "#ffffff");
-        img.style.backgroundColor = currentImageBackgroundColor;
-    });
-
-    // Listen for changes to the Chrome storage
-    chrome.storage.onChanged.addListener((changes, namespace) => {
-        if (namespace === "sync" && changes.imageBackgroundColor) {
-            if (changes.imageBackgroundColor.newValue !== currentImageBackgroundColor) {
-                currentImageBackgroundColor = checkIfAValueIsAColor(changes.imageBackgroundColor.newValue, "#ffffff");
-                img.style.backgroundColor = currentImageBackgroundColor;
-            }
-        }
-    });
-  }
+  // Initialize color for the image
+  initializeColor(img, "imageBackgroundColor", "backgroundColor", "#ffffff");
 }

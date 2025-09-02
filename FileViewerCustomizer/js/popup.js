@@ -25,69 +25,36 @@ function checkIfAValueIsAColor(value, defaultValue){
     }
 }
 
+// Initialize color picker for the main element
+function initColorPicker(inputId, valueId, defaultColor) {
+    getFromChromeStorage(inputId, (color) => {
+        const input = document.querySelector(`#${inputId}`);
+        const valueDiv = document.querySelector(`#${valueId}`);
+
+        input.value = checkIfAValueIsAColor(color, defaultColor);
+        valueDiv.textContent = input.value;
+
+        // Debounce to not exceed the chrome storage API call limit
+        let timeOut;
+        let debounce = 100;
+
+        // Listen for changes to the color input
+        input.addEventListener("input", (event) => {
+            const color = event.target.value;
+            valueDiv.innerHTML = color;
+            clearTimeout(timeOut);
+            timeOut = setTimeout(() => {
+                saveToChromeStorage(inputId, color);
+            }, debounce);
+        });
+    });
+}
+
 // Initialize the background color input
-getFromChromeStorage("backgroundColor", (color) => {
-    const inputBackgroundColor = document.querySelector("#backgroundColor");
-    const valueDiv = document.querySelectorAll("#value")[0];
+initColorPicker("backgroundColor", "value1", "#000000");
 
-    inputBackgroundColor.value = checkIfAValueIsAColor(color, "#000000");
-    valueDiv.textContent = inputBackgroundColor.value;
+// Initialize the text color input
+initColorPicker("textColor", "value2", "#ffffff");
 
-    // Debounce to not exceed the chrome storage API call limit
-    let timeOut;
-    let debounce = 100;
-
-    // Listen for changes to the background color input
-    inputBackgroundColor.addEventListener("input", (event) => {
-        const color = event.target.value;
-        valueDiv.innerHTML = color;
-        clearTimeout(timeOut);
-        timeOut = setTimeout(() => {
-            saveToChromeStorage("backgroundColor", color);
-        }, debounce);
-    });
-});
-
-getFromChromeStorage("textColor", (color) => {
-    const inputTextColor = document.querySelector("#textColor");
-    const valueDiv = document.querySelectorAll("#value")[1];
-
-    inputTextColor.value = checkIfAValueIsAColor(color, "#ffffff");
-    valueDiv.textContent = inputTextColor.value;
-
-    // Debounce to not exceed the chrome storage API call limit
-    let timeOut;
-    let debounce = 100;
-
-    // Listen for changes to the text color input
-    inputTextColor.addEventListener("input", (event) => {
-        const color = event.target.value;
-        valueDiv.innerHTML = color;
-        clearTimeout(timeOut);
-        timeOut = setTimeout(() => {
-            saveToChromeStorage("textColor", color);
-        }, debounce);
-    });
-});
-
-getFromChromeStorage("imageBackgroundColor", (color) => {
-    const inputImageBackgroundColor = document.querySelector("#imageBackgroundColor");
-    const valueDiv = document.querySelectorAll("#value")[2];
-
-    inputImageBackgroundColor.value = checkIfAValueIsAColor(color, "#ffffff");
-    valueDiv.textContent = inputImageBackgroundColor.value;
-
-    // Debounce to not exceed the chrome storage API call limit
-    let timeOut;
-    let debounce = 100;
-
-    // Listen for changes to the image background color input
-    inputImageBackgroundColor.addEventListener("input", (event) => {
-        const color = event.target.value;
-        valueDiv.innerHTML = color;
-        clearTimeout(timeOut);
-        timeOut = setTimeout(() => {
-            saveToChromeStorage("imageBackgroundColor", color);
-        }, debounce);
-    });
-});
+// Initialize the image background color input
+initColorPicker("imageBackgroundColor", "value3", "#ffffff");
