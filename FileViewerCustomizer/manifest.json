@@ -14,11 +14,11 @@
   },
   "permissions": ["storage"],
   "icons": {
-    "16": "img/cat16.png",
-    "32": "img/cat32.png",
-    "48": "img/cat48.png",
-    "64": "img/cat64.png",
-    "96": "img/cat96.png",
-    "128": "img/cat128.png"
+    "16": "img/16.png",
+    "32": "img/32.png",
+    "48": "img/48.png",
+    "64": "img/64.png",
+    "96": "img/96.png",
+    "128": "img/128.png"
   }
 }
