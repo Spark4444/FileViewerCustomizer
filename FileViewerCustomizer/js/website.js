@@ -18,11 +18,6 @@ if (isLocalFile || isDirectFile) {
       });
   }
 
-  // Function to clear all data from Chrome storage
-  function clearChromeStorage() {
-      chrome.storage.sync.clear();
-  }
-
   // Checks if a chrome storage value is set
   function checkIfAValueIsAColor(value, defaultValue){
       if(CSS.supports("color", value)){
@@ -59,11 +54,11 @@ if (isLocalFile || isDirectFile) {
   }
 
   // Initialize color for the main element
-  initializeColor(mainElement, "backgroundColor", "backgroundColor", "#000000");
+  initializeColor(mainElement, "backgroundColor", "backgroundColor", "#0e0e0e");
 
   // Initialize color for the preformatted text
   initializeColor(pre, "textColor", "color", "#ffffff");
 
   // Initialize color for the image
-  initializeColor(img, "imageBackgroundColor", "backgroundColor", "#ffffff");
+  initializeColor(img, "imageBackgroundColor", "backgroundColor", "#e6e6e6");
 }
