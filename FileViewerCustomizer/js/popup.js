@@ -25,6 +25,12 @@ function checkIfAValueIsAColor(value, defaultValue){
     }
 }
 
+// Reset buttons
+const resetButtons = document.querySelectorAll(".reset");
+
+// Reset all color pickers button
+const resetAllButton = document.querySelector(".resetAll");
+
 // Initialize color picker for the main element
 function initColorPicker(inputId, valueId, defaultColor) {
     getFromChromeStorage(inputId, (color) => {
@@ -58,3 +64,20 @@ initColorPicker("textColor", "value2", "#ffffff");
 
 // Initialize the image background color input
 initColorPicker("imageBackgroundColor", "value3", "#ffffff");
+
+// Reset individual color pickers
+resetButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const colorInput = document.querySelector(`#${button.getAttribute("for")}`);
+        colorInput.value = button.getAttribute("defaultValue");
+        colorInput.dispatchEvent(new Event("input"));
+    });
+});
+
+// Reset all color pickers
+resetAllButton.addEventListener("click", () => {
+    document.querySelectorAll("input[type='color']").forEach((input , index) => {
+        input.value = resetButtons[index].getAttribute("defaultValue");
+        input.dispatchEvent(new Event("input"));
+    });
+});

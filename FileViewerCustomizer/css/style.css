@@ -1,94 +1,141 @@
+#value1,
+#value2,
+#value3 {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    color: black;
+    min-width: 80px;
+    padding: 8px 12px;
+}
+
+#value1,
+#value2,
+#value3,
+.reset,
+.resetAll {
+    border-radius: 10px;
+    border: 1px solid #ffffff1a;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-shadow: 0 1px 2px #0000004d;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  width: 300px;
-  min-height: 170px;
-  font-family: helvetica;
-  background: #ffffff;
-  color: black;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-h1 {
-  font-size: 22px;
-  font-weight: 600;
-  color: black;
-  text-align: center;
-  margin-bottom: 25px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.label {
-  display: block;
-  font-size: 14px;
-  font-weight: 500;
-  color: black;
-  margin-bottom: 8px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .colorPickerContainer {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 15px;
-  padding: 12px;
-  background: rgb(0 0 0 / 10%);
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgb(0 0 0 / 20%);
+    align-items: center;
+    backdrop-filter: blur(10px);
+    background: #0000001a;
+    border-radius: 8px;
+    border: 1px solid #00000033;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 12px;
 }
 
-#backgroundColor, #textColor, #imageBackgroundColor {
-  width: 24px;
-  height: 24px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  outline: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.label {
+    color: black;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-shadow: 0 1px 2px #0000001a;
 }
 
-#backgroundColor:hover, #textColor:hover, #imageBackgroundColor:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+.leftColorPickerWrap {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 120px;
 }
 
-#backgroundColor::-webkit-color-swatch-wrapper, #textColor::-webkit-color-swatch-wrapper, #imageBackgroundColor::-webkit-color-swatch-wrapper {
-  padding: 0;
-  border-radius: 6px;
-  border: none;
+.reset {
+    min-width: 70px;
+    padding: 7px 10px;
 }
 
-#backgroundColor::-webkit-color-swatch, #textColor::-webkit-color-swatch, #imageBackgroundColor::-webkit-color-swatch {
-  border: none;
-  border-radius: 6px;
+.reset,
+.resetAll {
+    background: #000000bd;
+    color: #ffffff;
 }
 
-#value1, #value2, #value3 {
-  font-family: helvetica;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  color: black;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 8px 12px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  min-width: 80px;
-  text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  letter-spacing: 0.5px;
+.reset:hover,
+.resetAll:hover {
+    background: #000000e6;
+    box-shadow: 0 2px 8px #00000033;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resetAll {
+    left: 10px;
+    min-width: 85px;
+    padding: 4px 5px;
+    position: fixed;
+    top: 10px;
 }
 
 body {
-  animation: fadeIn 0.3s ease-out;
+    animation: fadeIn 0.3s ease-out;
+    background: #ffffff;
+    border-radius: 8px;
+    color: black;
+    font-family: helvetica;
+    min-height: 170px;
+    padding: 20px;
+    width: 300px;
+}
+
+h1 {
+    color: black;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: 0 2px 4px #00000033;
+}
+
+input[type="color"] {
+    box-shadow: 0 2px 8px #00000026;
+    cursor: pointer;
+    height: 24px;
+    outline: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 24px;
+}
+
+input[type="color"],
+input[type="color"]::-webkit-color-swatch-wrapper,
+input[type="color"]::-webkit-color-swatch {
+    border-radius: 6px;
+    border: none;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]:focus {
+    outline-offset: 2px;
+    outline: 2px solid #ffffff80;
+}
+
+input[type="color"]:focus {
+    outline-offset: 2px;
+    outline: 2px solid #ffffff80;
+}
+
+input[type="color"]:hover {
+    transform: scale(1.05);
 }
 
 @keyframes fadeIn {
@@ -100,9 +147,4 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-#backgroundColor:focus, #textColor:focus, #imageBackgroundColor:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.5);
-  outline-offset: 2px;
 }

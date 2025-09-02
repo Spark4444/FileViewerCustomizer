@@ -4,7 +4,7 @@ Change the styles of file viewer in your browser.
 Customize the background color, text color, and image background color in the popup of the extension.
 
 <br>
-[Chrome Web Store link]()
+[Chrome Web Store link](not yet published)
 
 # Feature
 - Change background color

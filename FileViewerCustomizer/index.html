@@ -7,36 +7,46 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <div class="resetAll">Reset All</div>
     <h1>Settings</h1>
     <div class="label">Background Color</div>
     <div class="colorPickerContainer">
-      <input
-        type="color"
-        id="backgroundColor"
-        name="backgroundColor"
-        value="#000000"
-      />
-      <label id="value1" for="backgroundColor">#000000</label>
+      <div class="leftColorPickerWrap">
+          <input
+          type="color"
+          id="backgroundColor"
+          name="backgroundColor"
+          value="#000000"
+        />
+        <label id="value1" for="backgroundColor">#000000</label>
+      </div>
+      <div class="reset" for="backgroundColor" defaultValue="#000000">Reset</div>
     </div>
     <div class="label">Text color</div>
     <div class="colorPickerContainer">
-      <input
-        type="color"
-        id="textColor"
-        name="textColor"
-        value="#ffffff"
-      />
-      <label id="value2" for="textColor">#ffffff </label>
+      <div class="leftColorPickerWrap">
+        <input
+          type="color"
+          id="textColor"
+          name="textColor"
+          value="#ffffff"
+        />
+        <label id="value2" for="textColor">#ffffff</label>
+      </div>
+      <div class="reset" for="textColor" defaultValue="#ffffff">Reset</div>
     </div>
     <div class="label">Image background color</div>
     <div class="colorPickerContainer">
-      <input
-        type="color"
-        id="imageBackgroundColor"
-        name="imageBackgroundColor"
-        value="#ffffff"
-      />
-      <label id="value3" for="imageBackgroundColor">#ffffff </label>
+      <div class="leftColorPickerWrap">
+        <input
+          type="color"
+          id="imageBackgroundColor"
+          name="imageBackgroundColor"
+          value="#ffffff"
+        />
+        <label id="value3" for="imageBackgroundColor">#ffffff</label>
+      </div>
+      <div class="reset" for="imageBackgroundColor" defaultValue="#ffffff">Reset</div>
     </div>
     <script src="js/popup.js"></script>
   </body>
