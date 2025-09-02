@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Local File Background Changer",
-  "description": "An extension that allows you to change the background of local files in local file viewer in Chrome.",
-  "version": "1.0.0",
+  "name": "File Viewer Customizer",
+  "description": "Change the styles of file viewer in your browser.",
+  "version": "1.5.6",
   "content_scripts": [
     {
       "matches": ["file:///*", "http://*/*", "https://*/*"],
