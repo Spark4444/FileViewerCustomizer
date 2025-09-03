@@ -10,11 +10,6 @@ function getFromChromeStorage(key, callback) {
     });
 }
 
-// Function to clear all data from Chrome storage
-function clearChromeStorage() {
-    chrome.storage.sync.clear();
-}
-
 // Checks if a chrome storage value is set
 function checkIfAValueIsAColor(value, defaultValue){
     if(CSS.supports("color", value)){
