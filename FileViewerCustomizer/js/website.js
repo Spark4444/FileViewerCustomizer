@@ -32,6 +32,20 @@ if (isLocalFile || isDirectFile) {
   const mainElement = document.body || document.querySelector("svg");
   const pre = document.querySelector("pre");
   const img = document.querySelector("img");
+  const currentMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  let defaultValues = [
+    ["#0e0e0e", "#e6e6e6"], // backgroundColor
+    ["#ffffff", "#000000"], // textColor
+    ["#e6e6e6", "#0e0e0e"]  // imageBackgroundColor
+  ];
+
+  function parseDefaultValue(defaultValues) {
+    return defaultValues.map(value => {
+        return currentMode === "dark" ? value[0] : value[1];
+    });
+  }
+
+  defaultValues = parseDefaultValue(defaultValues);
 
   // Initialize color for the image
   function initializeColor(element, storageKey, styleProperty, defaultColor) {
@@ -54,11 +68,11 @@ if (isLocalFile || isDirectFile) {
   }
 
   // Initialize color for the main element
-  initializeColor(mainElement, "backgroundColor", "backgroundColor", "#0e0e0e");
+  initializeColor(mainElement, "backgroundColor", "backgroundColor", defaultValues[0]);
 
   // Initialize color for the preformatted text
-  initializeColor(pre, "textColor", "color", "#ffffff");
+  initializeColor(pre, "textColor", "color", defaultValues[1]);
 
   // Initialize color for the image
-  initializeColor(img, "imageBackgroundColor", "backgroundColor", "#e6e6e6");
+  initializeColor(img, "imageBackgroundColor", "backgroundColor", defaultValues[2]);
 }

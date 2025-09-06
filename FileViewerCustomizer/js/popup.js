@@ -29,7 +29,7 @@ const resetButtons = document.querySelectorAll(".reset");
 const resetAllButton = document.querySelector(".resetAll");
 
 // Detect if the user has a dark or light theme preference
-let currentMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+const currentMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
 // Initialize color picker for the main element
 function initColorPicker(inputId, valueId, defaultColor) {
@@ -56,19 +56,21 @@ function initColorPicker(inputId, valueId, defaultColor) {
     });
 }
 
+function getColorFromDefaultValue(defaultValue) {
+    const values = JSON.parse(defaultValue);
+    return currentMode === "dark" ? values[0] : values[1];
+}
+
 // Initialize color pickers
 inputs.forEach((input, index) => {
-    const defaultValues = JSON.parse(resetButtons[index].getAttribute("defaultValue"));
-
-    initColorPicker(input.id, `value${index + 1}`, defaultValues[currentMode === "dark" ? 0 : 1]);
+    initColorPicker(input.id, `value${index + 1}`, getColorFromDefaultValue(resetButtons[index].getAttribute("defaultValue")));
 });
 
 // Reset individual color pickers
 resetButtons.forEach((button) => {
     button.addEventListener("click", () => {
-        const defaultValues = JSON.parse(button.getAttribute("defaultValue"));
         const colorInput = document.querySelector(`#${button.getAttribute("for")}`);
-        colorInput.value = defaultValues[currentMode === "dark" ? 0 : 1];
+        colorInput.value = getColorFromDefaultValue(button.getAttribute("defaultValue"));
         colorInput.dispatchEvent(new Event("input"));
     });
 });
@@ -76,8 +78,7 @@ resetButtons.forEach((button) => {
 // Reset all color pickers
 resetAllButton.addEventListener("click", () => {
     document.querySelectorAll("input[type='color']").forEach((input , index) => {
-        const defaultValues = JSON.parse(resetButtons[index].getAttribute("defaultValue"));
-        input.value = defaultValues[currentMode === "dark" ? 0 : 1];
+        input.value = getColorFromDefaultValue(resetButtons[index].getAttribute("defaultValue"));
         input.dispatchEvent(new Event("input"));
     });
 });
