@@ -28,6 +28,9 @@ const resetButtons = document.querySelectorAll(".reset");
 // Reset all color pickers button
 const resetAllButton = document.querySelector(".resetAll");
 
+// Detect if the user has a dark or light theme preference
+let currentMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+
 // Initialize color picker for the main element
 function initColorPicker(inputId, valueId, defaultColor) {
     getFromChromeStorage(inputId, (color) => {
@@ -55,14 +58,17 @@ function initColorPicker(inputId, valueId, defaultColor) {
 
 // Initialize color pickers
 inputs.forEach((input, index) => {
-    initColorPicker(input.id, `value${index + 1}`, resetButtons[index].getAttribute("defaultValue"));
+    const defaultValues = JSON.parse(resetButtons[index].getAttribute("defaultValue"));
+
+    initColorPicker(input.id, `value${index + 1}`, defaultValues[currentMode === "dark" ? 0 : 1]);
 });
 
 // Reset individual color pickers
 resetButtons.forEach((button) => {
     button.addEventListener("click", () => {
+        const defaultValues = JSON.parse(button.getAttribute("defaultValue"));
         const colorInput = document.querySelector(`#${button.getAttribute("for")}`);
-        colorInput.value = button.getAttribute("defaultValue");
+        colorInput.value = defaultValues[currentMode === "dark" ? 0 : 1];
         colorInput.dispatchEvent(new Event("input"));
     });
 });
@@ -70,7 +76,8 @@ resetButtons.forEach((button) => {
 // Reset all color pickers
 resetAllButton.addEventListener("click", () => {
     document.querySelectorAll("input[type='color']").forEach((input , index) => {
-        input.value = resetButtons[index].getAttribute("defaultValue");
+        const defaultValues = JSON.parse(resetButtons[index].getAttribute("defaultValue"));
+        input.value = defaultValues[currentMode === "dark" ? 0 : 1];
         input.dispatchEvent(new Event("input"));
     });
 });
