@@ -3,8 +3,11 @@ Change the styles of file viewer in your browser.
 
 Customize the background color, text color, and image background color in the popup of the extension.
 
-<br>
-[Chrome Web Store link](not yet published)
+[Chrome Web Store link](https://chrome.google.com/webstore/devconsole/04e1259d-7268-406c-b779-5e0c8abd36cd/nkmlfminoimdghckhoonfihonkegakgj/edit)
+
+# IMPORTANT
+This extension will only work if you enable the "Allow access to file URLs" option in the extension settings.
+![Screenshot](notice.png)
 
 # Feature
 - Change background color
