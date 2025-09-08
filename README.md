@@ -6,8 +6,8 @@ Customize the background color, text color, and image background color in the po
 [Chrome Web Store link](https://chrome.google.com/webstore/devconsole/04e1259d-7268-406c-b779-5e0c8abd36cd/nkmlfminoimdghckhoonfihonkegakgj/edit)
 
 # IMPORTANT
+![Screenshot](FileViewerCustomizer/img/notice.png)
 This extension will only work if you enable the "Allow access to file URLs" option in the extension settings.
-![Screenshot](notice.png)
 
 # Feature
 - Change background color

@@ -2,7 +2,10 @@
   "manifest_version": 3,
   "name": "File Viewer Customizer",
   "description": "Change the styles of file viewer in your browser.",
-  "version": "1.8.0",
+  "version": "1.8.2",
+  "background": {
+    "service_worker": "js/background.js"
+  },
   "content_scripts": [
     {
       "matches": ["file:///*", "http://*/*", "https://*/*"],
