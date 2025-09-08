@@ -3,7 +3,7 @@ Change the styles of file viewer in your browser.
 
 Customize the background color, text color, and image background color in the popup of the extension.
 
-[Chrome Web Store link](https://chrome.google.com/webstore/devconsole/04e1259d-7268-406c-b779-5e0c8abd36cd/nkmlfminoimdghckhoonfihonkegakgj/edit)
+[Chrome Web Store link](https://chromewebstore.google.com/detail/file-viewer-customizer/nkmlfminoimdghckhoonfihonkegakgj)
 
 # IMPORTANT
 ![Screenshot](FileViewerCustomizer/img/notice.png)
