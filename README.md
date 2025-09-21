@@ -9,7 +9,7 @@ Customize the background color, text color, and image background color in the po
 ![Screenshot](FileViewerCustomizer/img/notice.png)
 This extension will only work if you enable the "Allow access to file URLs" option in the extension settings.
 
-# Feature
+# Features
 - Change background color
 - Change text color
 - Change image background color
